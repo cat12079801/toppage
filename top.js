@@ -51,26 +51,6 @@ $(function(){
 	});
 });
 
-function mouse_on(this_obj, rad){
-	// .stop() でアニメーションが狂わなくなる
-	this_obj.stop().animate({
-		// shorter*0.1 大きくなる分の半分ずらす
-		top: shorter*0.8*sin(rad)-shorter*0.2/2 - shorter*0.05 + "px",
-		left: shorter*0.8*cos(rad)-shorter*0.2/2 - shorter*0.05 + "px",
-		width: shorter*0.3 + "px",
-		height: shorter*0.3 + "px"
-	},150);
-}
-
-function mouse_off(this_obj, rad){
-	this_obj.stop().animate({
-		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
-		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
-		width: shorter*0.2 + "px",
-		height: shorter*0.2 + "px"
-	},150);
-}
-
 function init(){
 	color = new Array();
 	color = {
@@ -141,69 +121,54 @@ function ballResize(){
 		// 大きさの半分を引いて左上を中心に
 		$(this).offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
 	});
-	$("#firstBall").each(function(){
-		// イニシャルを置く
-		$("#A").each(function(){
-			$(this).offset({
-				top:shorter*0.8*sin(12)-$(this).css("font-size").replace("px","")/2,
-				left:shorter*0.8*cos(12)-$(this).css("font-size").replace("px","")/2,
-			});
-			console.log($(this).css("font-size"));
-		});
-		$(this).height(shorter*0.2);
-		$(this).width(shorter*0.2);
-		$(this).offset({
-			// sin()までで円弧上の座標、そこから画像の半分を引く
-			top:shorter*0.8*sin(12)-shorter*0.2/2,
-			left:shorter*0.8*cos(12)-shorter*0.2/2
-		});
-	});
-	$("#secondBall").each(function(){
-		$("#C").each(function(){
-			$(this).offset({
-				top:shorter*0.8*sin(34)-$(this).css("font-size").replace("px","")/2,
-				left:shorter*0.8*cos(34)-$(this).css("font-size").replace("px","")/2*0.8,
-			});
-			console.log($(this).css("font-size"));
-		});
-		$(this).height(shorter*0.2);
-		$(this).width(shorter*0.2);
-		$(this).offset({
-			top:shorter*0.8*sin(34)-shorter*0.2/2,
-			left:shorter*0.8*cos(34)-shorter*0.2/2
-		});
-	});
-	$("#thirdBall").each(function(){
-		$("#P").each(function(){
-			$(this).offset({
-				top:shorter*0.8*sin(56)-$(this).css("font-size").replace("px","")/2,
-				left:shorter*0.8*cos(56)-$(this).css("font-size").replace("px","")/2,
-			});
-			console.log($(this).css("font-size"));
-		});
-		$(this).height(shorter*0.2);
-		$(this).width(shorter*0.2);
-		$(this).offset({
-			top:shorter*0.8*sin(56)-shorter*0.2/2,
-			left:shorter*0.8*cos(56)-shorter*0.2/2
-		});
-	});
-	$("#fourthBall").each(function(){
-		$("#N").each(function(){
-			$(this).offset({
-				top:shorter*0.8*sin(78)-$(this).css("font-size").replace("px","")/2,
-				left:shorter*0.8*cos(78)-$(this).css("font-size").replace("px","")/2*0.7,
-			});
-			console.log($(this).css("font-size"));
-		});
-		$(this).height(shorter*0.2);
-		$(this).width(shorter*0.2);
-		$(this).offset({
-			top:shorter*0.8*sin(78)-shorter*0.2/2,
-			left:shorter*0.8*cos(78)-shorter*0.2/2
-		});
-	});
+	// 小さいボールとその上の文字をリサイズ、リプレース
+	// 3,4引数は位置調整の倍率なのでデフォルトが1
+	resize($("#firstBall"), 12, 1, 0.9);
+	resize($("#secondBall"), 34, 0.8, 0.8);
+	resize($("#thirdBall"), 56, 0.9, 0.9);
+	resize($("#fourthBall"), 78, 0.7, 1);
+}
 
+// マウスオーバーon時の処理関数
+function mouse_on(this_obj, rad){
+	// .stop() でアニメーションが狂わなくなる
+	this_obj.stop().animate({
+		// shorter*0.1 大きくなる分の半分ずらす
+		top: shorter*0.8*sin(rad)-shorter*0.2/2 - shorter*0.05 + "px",
+		left: shorter*0.8*cos(rad)-shorter*0.2/2 - shorter*0.05 + "px",
+		width: shorter*0.3 + "px",
+		height: shorter*0.3 + "px"
+	},150);
+}
+
+// マウスオーバーoff時の処理関数
+function mouse_off(this_obj, rad){
+	this_obj.stop().animate({
+		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
+		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
+		width: shorter*0.2 + "px",
+		height: shorter*0.2 + "px"
+	},150);
+}
+
+//リサイズ、リプレースする関数
+function resize(this_obj, rad, adjustX, adjustY){
+	this_obj.each(function(){
+		// イニシャルを置く
+		$(this).siblings(".initial").each(function(){
+			$(this).offset({
+				top:shorter*0.8*sin(rad)-$(this).css("font-size").replace("px","")/2*adjustY,
+				left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")/2*adjustX,
+			});
+		});
+		this_obj.height(shorter*0.2);
+		this_obj.width(shorter*0.2);
+		this_obj.offset({
+			// sin()までで円弧上の座標、そこから画像の半分を引く
+			top:shorter*0.8*sin(rad)-shorter*0.2/2,
+			left:shorter*0.8*cos(rad)-shorter*0.2/2
+		});
+	});
 }
 
 function sin(x){
