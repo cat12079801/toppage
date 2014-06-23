@@ -132,6 +132,7 @@ function ballResize(){
 	height = $("#wrapper").height();
 	width = $("#wrapper").width();
 	shorter = height < width ? height : width;
+	$(".initial").css("fontSize", shorter/8+"px");
 
 	$("#mainBall").each(function(){
 		// 大きさの調整はなんとなく好みで
@@ -147,6 +148,7 @@ function ballResize(){
 				top:shorter*0.8*sin(12)-$(this).css("font-size").replace("px","")/2,
 				left:shorter*0.8*cos(12)-$(this).css("font-size").replace("px","")/2,
 			});
+			console.log($(this).css("font-size"));
 		});
 		$(this).height(shorter*0.2);
 		$(this).width(shorter*0.2);
@@ -157,6 +159,13 @@ function ballResize(){
 		});
 	});
 	$("#secondBall").each(function(){
+		$("#C").each(function(){
+			$(this).offset({
+				top:shorter*0.8*sin(34)-$(this).css("font-size").replace("px","")/2,
+				left:shorter*0.8*cos(34)-$(this).css("font-size").replace("px","")/2*0.8,
+			});
+			console.log($(this).css("font-size"));
+		});
 		$(this).height(shorter*0.2);
 		$(this).width(shorter*0.2);
 		$(this).offset({
@@ -165,6 +174,13 @@ function ballResize(){
 		});
 	});
 	$("#thirdBall").each(function(){
+		$("#P").each(function(){
+			$(this).offset({
+				top:shorter*0.8*sin(56)-$(this).css("font-size").replace("px","")/2,
+				left:shorter*0.8*cos(56)-$(this).css("font-size").replace("px","")/2,
+			});
+			console.log($(this).css("font-size"));
+		});
 		$(this).height(shorter*0.2);
 		$(this).width(shorter*0.2);
 		$(this).offset({
@@ -173,6 +189,13 @@ function ballResize(){
 		});
 	});
 	$("#fourthBall").each(function(){
+		$("#N").each(function(){
+			$(this).offset({
+				top:shorter*0.8*sin(78)-$(this).css("font-size").replace("px","")/2,
+				left:shorter*0.8*cos(78)-$(this).css("font-size").replace("px","")/2*0.7,
+			});
+			console.log($(this).css("font-size"));
+		});
 		$(this).height(shorter*0.2);
 		$(this).width(shorter*0.2);
 		$(this).offset({
@@ -181,7 +204,6 @@ function ballResize(){
 		});
 	});
 
-	$(".initial").css("fontSize", shorter/8+"px");
 }
 
 function sin(x){
