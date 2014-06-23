@@ -1,0 +1,35 @@
+body{
+	color: #5D5D5D;
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	font-family: ballw, sans-serif, Verdana, Arial, "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック";
+}
+
+body #wrapper{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+
+.ball{
+	opacity: 0;
+	position: fixed;
+}
+
+.initial{
+	opacity: 0;
+	font-family: ballw;
+	font-size: 130%;
+	text-shadow:
+		-1px -1px #FFF,
+		1px -1px #FFF,
+		-1px 1px #FFF,
+		1px 1px #FFF;
+}
+
+@font-face{
+	font-family: 'ballw';
+	src: url("ballw.ttf");
+}
