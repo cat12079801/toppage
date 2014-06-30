@@ -135,7 +135,7 @@ function mouse_on(this_obj, rad){
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 - shorter*0.05 + "px",
 		width: shorter*0.3 + "px",
 		height: shorter*0.3 + "px"
-	},150);
+	},300);
 }
 
 // マウスオーバーoff時の処理関数
@@ -145,7 +145,7 @@ function mouse_off(this_obj, rad){
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
 		width: shorter*0.2 + "px",
 		height: shorter*0.2 + "px"
-	},150);
+	},700);
 }
 
 //リサイズ、リプレースする関数
