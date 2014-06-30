@@ -94,12 +94,12 @@ function init(){
 		"duration": 1000,
 		"easing": "swing",
 		"complete": function(){
-			$(".ball").fadeTo(1000, 1);
+			$(".ball").fadeTo(1500, 1);
 			ballResize();
 			setTimeout(function(){
 				fadeIned = true;
 			},500);
-			$(".initial").fadeTo(1000, 1);
+			$(".initial").fadeTo(1500, 1);
 			ballResize();
 			setTimeout(function(){
 				fadeIned = true;
