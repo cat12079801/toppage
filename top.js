@@ -13,45 +13,46 @@ $(function(){
 		ballResize();
 	});
 
-	$(".ball").hover(function(){
-		if($(this).opacity != 1){
-			$(this).fadeTo(300, 1);
-		}
+	$(".chunk").hover(function(){
 		if(fadeIned == true){
-			switch($(this).attr("id")){
-				case "firstBall":
-					mouse_on($(this), 12);
-					break;
-				case "secondBall":
-					mouse_on($(this), 34);
-					break;
-				case "thirdBall":
-					mouse_on($(this), 56);
-					break;
-				case "fourthBall":
-					mouse_on($(this), 78);
-					break;
-			}
-		}
-	},function(){
-		switch($(this).attr("id")){
-			case "firstBall":
-				mouse_off($(this), 12);
-				break;
-			case "secondBall":
-				mouse_off($(this), 34);
-				break;
-			case "thirdBall":
-				mouse_off($(this), 56);
-				break;
-			case "fourthBall":
-				mouse_off($(this), 78);
-				break;
+			$(".chunk").hover(function(){
+				switch($(this).children(".ball").attr("id")){
+					case "firstBall":
+						console.log($(this).children(".ball").attr("id"));
+						mouse_on($(this).children(".ball"), 12);
+						break;
+					case "secondBall":
+						mouse_on($(this).children(".ball"), 34);
+						break;
+					case "thirdBall":
+						mouse_on($(this).children(".ball"), 56);
+						break;
+					case "fourthBall":
+						mouse_on($(this).children(".ball"), 78);
+						break;
+				}
+			},function(){
+				switch($(this).children(".ball").attr("id")){
+					case "firstBall":
+						mouse_off($(this).children(".ball"), 12);
+						break;
+					case "secondBall":
+						mouse_off($(this).children(".ball"), 34);
+						break;
+					case "thirdBall":
+						mouse_off($(this).children(".ball"), 56);
+						break;
+					case "fourthBall":
+						mouse_off($(this).children(".ball"), 78);
+						break;
+				}
+			});
 		}
 	});
 });
 
 function init(){
+	fadeTime = 1500;
 	color = new Array();
 	color = {
 		0: "vivid/1.png",
@@ -94,16 +95,12 @@ function init(){
 		"duration": 1000,
 		"easing": "swing",
 		"complete": function(){
-			$(".ball").fadeTo(1500, 1);
+			$(".ball").fadeTo(fadeTime, 1);
+			$(".initial").fadeTo(fadeTime, 1);
 			ballResize();
 			setTimeout(function(){
 				fadeIned = true;
-			},500);
-			$(".initial").fadeTo(1500, 1);
-			ballResize();
-			setTimeout(function(){
-				fadeIned = true;
-			},500);
+			},fadeTime);
 		}
 	});
 }
