@@ -147,10 +147,11 @@ function mouse_on(this_obj, rad){
 		width: shorter*0.3 + "px",
 		height: shorter*0.3 + "px"
 	},300);
+	var largeFont = shorter/5;
 	this_obj.siblings(".initial").stop().animate({
-		fontSize:shorter/4+"px",
-		top:shorter*0.8*sin(rad)-shorter/8/2*adjustY[rad]-shorter/16*adjustY[rad],
-		left:shorter*0.8*cos(rad)-shorter/8/2*adjustX[rad]-shorter/16*adjustX[rad],
+		fontSize:largeFont+"px",
+		top:shorter*0.8*sin(rad)-largeFont/2/2*adjustY[rad]-largeFont/4*adjustY[rad],
+		left:shorter*0.8*cos(rad)-largeFont/2/2*adjustX[rad]-largeFont/4*adjustX[rad],
 	},300);
 }
 
