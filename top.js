@@ -1,4 +1,16 @@
 var fadeIned = false;
+var adjustX = {
+	12: 1,
+	34: 0.8,
+	56: 0.9,
+	78: 0.7
+};
+var adjustY = {
+	12: 0.9,
+	34: 0.8,
+	56: 0.9,
+	78: 1
+}
 
 $(function(){
 	var height = $("#wrapper").height();
@@ -18,7 +30,6 @@ $(function(){
 			$(".chunk").hover(function(){
 				switch($(this).children(".ball").attr("id")){
 					case "firstBall":
-						console.log($(this).children(".ball").attr("id"));
 						mouse_on($(this).children(".ball"), 12);
 						break;
 					case "secondBall":
@@ -119,7 +130,7 @@ function ballResize(){
 		$(this).offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
 	});
 	// 小さいボールとその上の文字をリサイズ、リプレース
-	// 3,4引数は位置調整の倍率なのでデフォルトが1
+	// 3,4引数はX,Yの位置調整の倍率なのでデフォルトが1
 	resize($("#firstBall"), 12, 1, 0.9);
 	resize($("#secondBall"), 34, 0.8, 0.8);
 	resize($("#thirdBall"), 56, 0.9, 0.9);
@@ -136,6 +147,11 @@ function mouse_on(this_obj, rad){
 		width: shorter*0.3 + "px",
 		height: shorter*0.3 + "px"
 	},300);
+	this_obj.siblings(".initial").stop().animate({
+		fontSize:shorter/4+"px",
+		top:shorter*0.8*sin(rad)-shorter/8/2*adjustY[rad]-shorter/16*adjustY[rad],
+		left:shorter*0.8*cos(rad)-shorter/8/2*adjustX[rad]-shorter/16*adjustX[rad],
+	},300);
 }
 
 // マウスオーバーoff時の処理関数
@@ -145,17 +161,22 @@ function mouse_off(this_obj, rad){
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
 		width: shorter*0.2 + "px",
 		height: shorter*0.2 + "px"
-	},700);
+	},1200);
+	this_obj.siblings(".initial").stop().animate({
+		fontSize:shorter/8+"px",
+		top:shorter*0.8*sin(rad)-shorter/8/2*adjustY[rad],
+		left:shorter*0.8*cos(rad)-shorter/8/2*adjustX[rad],
+	},1200);
 }
 
 //リサイズ、リプレースする関数
-function resize(this_obj, rad, adjustX, adjustY){
+function resize(this_obj, rad){
 	this_obj.each(function(){
 		// イニシャルを置く
 		$(this).siblings(".initial").each(function(){
 			$(this).offset({
-				top:shorter*0.8*sin(rad)-$(this).css("font-size").replace("px","")/2*adjustY,
-				left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")/2*adjustX,
+				top:shorter*0.8*sin(rad)-$(this).css("font-size").replace("px","")/2*adjustY[rad],
+				left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")/2*adjustX[rad],
 			});
 		});
 		this_obj.height(shorter*0.2);
