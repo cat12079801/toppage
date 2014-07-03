@@ -19,6 +19,10 @@ body #wrapper{
 }
 
 .initial{
+	position: fixed;
+}
+
+.initial{
 	opacity: 0;
 	font-family: ballw;
 	font-size: 130%;
