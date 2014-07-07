@@ -141,17 +141,18 @@ function ballResize(){
 function mouse_on(this_obj, rad){
 	// .stop() でアニメーションが狂わなくなる
 	this_obj.stop().animate({
-		// shorter*0.1 大きくなる分の半分ずらす
-		top: shorter*0.8*sin(rad)-shorter*0.2/2 - shorter*0.05 + "px",
-		left: shorter*0.8*cos(rad)-shorter*0.2/2 - shorter*0.05 + "px",
+		// shorter/10 大きくなる分の半分ずらす
+		top: shorter*0.8*sin(rad) - shorter/10 - shorter/10/2 + "px",
+		left: shorter*0.8*cos(rad) - shorter/10 - shorter/10/2 + "px",
 		width: shorter*0.3 + "px",
 		height: shorter*0.3 + "px"
 	},300);
+	// largeFont サイズになるから位置調整等
 	var largeFont = shorter/5;
 	this_obj.siblings(".initial").stop().animate({
 		fontSize:largeFont+"px",
-		top:shorter*0.8*sin(rad)-largeFont/2/2*adjustY[rad]-largeFont/4*adjustY[rad],
-		left:shorter*0.8*cos(rad)-largeFont/2/2*adjustX[rad]-largeFont/4*adjustX[rad],
+		top:shorter*0.8*sin(rad)-largeFont/2*adjustY[rad] + "px",
+		left:shorter*0.8*cos(rad)-largeFont/2*adjustX[rad] + "px",
 	},300);
 }
 
