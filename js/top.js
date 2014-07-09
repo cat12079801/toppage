@@ -14,16 +14,16 @@ var adjustY = {
 }
 // adjustX2,Y2 はテキストの位置調整用
 var adjustX2 = {
-	12: 2,
-	34: 1,
-	56: 1,
+	12: 1,
+	34: 0.3,
+	56: 0.8,
 	78: 1
 };
 var adjustY2 = {
-	12: -1,
-	34: -1,
-	56: -1,
-	78: -1
+	12: -0.5,
+	34: -0.5,
+	56: -0.4,
+	78: -0.2
 }
 
 $(function(){
@@ -135,7 +135,7 @@ function ballResize(){
 	width = $("#wrapper").width();
 	shorter = height < width ? height : width;
 	$(".initial").css("fontSize", shorter/8+"px");
-	$(".text").css("fontSize", shorter/12+"px");
+	$(".text").css("fontSize", shorter/8+"px");
 
 	$("#mainBall").each(function(){
 		// 大きさの調整はなんとなく好みで
@@ -204,8 +204,8 @@ function resize(this_obj, rad){
 		});
 		$(this).siblings(".text").each(function(){
 			$(this).offset({
-				top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY2[rad],
-				left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX2[rad],
+				top: 999,
+				left: 999,
 			});
 		});
 		this_obj.height(shorter*0.2);
