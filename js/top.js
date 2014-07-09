@@ -1,15 +1,29 @@
 var fadeIned = false;
+// adjustX,Y はイニシャルの位置調整用
 var adjustX = {
-	12: 1,
-	34: 0.8,
-	56: 0.9,
-	78: 0.7
+	12: -1,
+	34: -0.8,
+	56: -0.9,
+	78: -0.7
 };
 var adjustY = {
-	12: 0.9,
-	34: 0.8,
-	56: 0.9,
+	12: -0.9,
+	34: -0.8,
+	56: -0.9,
+	78: -1
+}
+// adjustX2,Y2 はテキストの位置調整用
+var adjustX2 = {
+	12: 2,
+	34: 1,
+	56: 1,
 	78: 1
+};
+var adjustY2 = {
+	12: -1,
+	34: -1,
+	56: -1,
+	78: -1
 }
 
 $(function(){
@@ -121,6 +135,7 @@ function ballResize(){
 	width = $("#wrapper").width();
 	shorter = height < width ? height : width;
 	$(".initial").css("fontSize", shorter/8+"px");
+	$(".text").css("fontSize", shorter/12+"px");
 
 	$("#mainBall").each(function(){
 		// 大きさの調整はなんとなく好みで
@@ -151,9 +166,15 @@ function mouse_on(this_obj, rad){
 	var largeFont = shorter/5;
 	this_obj.siblings(".initial").stop().animate({
 		fontSize:largeFont+"px",
-		top:shorter*0.8*sin(rad)-largeFont/2*adjustY[rad] + "px",
-		left:shorter*0.8*cos(rad)-largeFont/2*adjustX[rad] + "px",
+		top:shorter*0.8*sin(rad)+largeFont/2*adjustY[rad] + "px",
+		left:shorter*0.8*cos(rad)+largeFont/2*adjustX[rad] + "px",
 	},300);
+	this_obj.siblings(".text").each(function(){
+		$(this).offset({
+			top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY2[rad],
+			left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX2[rad],
+		});
+	});
 }
 
 // マウスオーバーoff時の処理関数
@@ -166,8 +187,8 @@ function mouse_off(this_obj, rad){
 	},1200);
 	this_obj.siblings(".initial").stop().animate({
 		fontSize:shorter/8+"px",
-		top:shorter*0.8*sin(rad)-shorter/8/2*adjustY[rad],
-		left:shorter*0.8*cos(rad)-shorter/8/2*adjustX[rad],
+		top:shorter*0.8*sin(rad)+shorter/8/2*adjustY[rad],
+		left:shorter*0.8*cos(rad)+shorter/8/2*adjustX[rad],
 	},1200);
 }
 
@@ -177,8 +198,14 @@ function resize(this_obj, rad){
 		// イニシャルを置く
 		$(this).siblings(".initial").each(function(){
 			$(this).offset({
-				top:shorter*0.8*sin(rad)-$(this).css("font-size").replace("px","")/2*adjustY[rad],
-				left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")/2*adjustX[rad],
+				top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY[rad],
+				left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX[rad],
+			});
+		});
+		$(this).siblings(".text").each(function(){
+			$(this).offset({
+				top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY2[rad],
+				left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX2[rad],
 			});
 		});
 		this_obj.height(shorter*0.2);
