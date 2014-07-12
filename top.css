@@ -4,7 +4,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 	position: relative;
-	font-family: ballw, sans-serif, Verdana, Arial, "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック";
+	font-family: androgyne, sans-serif, Verdana, Arial, "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック";
 }
 
 body #wrapper{
@@ -21,7 +21,6 @@ body #wrapper{
 .initial{
 	opacity: 0;
 	position: fixed;
-	font-family: ballw;
 	text-shadow:
 		-1px -1px #FFF,
 		1px -1px #FFF,
@@ -40,6 +39,6 @@ body #wrapper{
 }
 
 @font-face{
-	font-family: 'ballw';
-	src: url("fonts/ballw.ttf");
+	font-family: 'androgyne';
+	src: url("fonts/androgyne.off");
 }
