@@ -190,6 +190,12 @@ function mouse_off(this_obj, rad){
 		top:shorter*0.8*sin(rad)+shorter/8/2*adjustY[rad],
 		left:shorter*0.8*cos(rad)+shorter/8/2*adjustX[rad],
 	},1200);
+	this_obj.siblings(".text").each(function(){
+		$(this).offset({
+			top: -99999,
+			left: -99999
+		});
+	});
 }
 
 //リサイズ、リプレースする関数
@@ -204,8 +210,8 @@ function resize(this_obj, rad){
 		});
 		$(this).siblings(".text").each(function(){
 			$(this).offset({
-				top: 999,
-				left: 999,
+				top: -99999,
+				left: -99999,
 			});
 		});
 		this_obj.height(shorter*0.2);
