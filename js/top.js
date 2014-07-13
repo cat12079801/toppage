@@ -172,9 +172,14 @@ function mouse_on(this_obj, rad){
 	this_obj.siblings(".text").each(function(){
 		$(this).offset({
 			top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY2[rad],
-			left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX2[rad],
+			left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")*adjustX2[rad],
 		});
 	});
+	this_obj.siblings(".text").stop().animate({
+		top:shorter*0.8*sin(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustY2[rad],
+		left:shorter*0.8*cos(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustX2[rad],
+		opacity: 1
+	},300);
 }
 
 // マウスオーバーoff時の処理関数
