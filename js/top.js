@@ -195,11 +195,18 @@ function mouse_off(this_obj, rad){
 		top:shorter*0.8*sin(rad)+shorter/8/2*adjustY[rad],
 		left:shorter*0.8*cos(rad)+shorter/8/2*adjustX[rad],
 	},1200);
-	this_obj.siblings(".text").each(function(){
-		$(this).offset({
-			top: -99999,
-			left: -99999
-		});
+	this_obj.siblings(".text").stop().animate({
+		top:shorter*0.8*sin(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustY2[rad],
+		left:shorter*0.8*cos(rad)-this_obj.siblings(".text").css("font-size").replace("px","")*adjustX2[rad],
+		opacity: 0
+	},{
+		"duration": 1000,
+		"complete": function(){
+			this_obj.siblings(".text").offset({
+				top: -99999,
+				left: -99999
+			});
+		}
 	});
 }
 
