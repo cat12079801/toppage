@@ -74,4 +74,16 @@ function clicked(this_obj, rad){
 		top: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/10 + shorter/10/2,
 		left: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/10 + shorter/10/2,
 	}, 1500);
+
+	$(".chunk").not(this_obj).stop().animate({
+		opacity: 0,
+	},{
+		"duration": 1500,
+		"complete": function(){
+			$(".chunk").not(this_obj).offset({
+				top: -99999,
+				left: -99999
+			});
+		}
+	});
 }
