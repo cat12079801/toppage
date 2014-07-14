@@ -31,6 +31,7 @@ $(function(){
 	var width = $("#wrapper").width();
 	var shorter = height < width ? height : width;
 
+	//初期化
 	ballResize();
 	$(".ball").offset({top:-1*$(this).height(), left:-1*$(this).width()})
 	$("#mainBall").offset({top:-1*$(this).height(), left:-1*$(this).width()})
@@ -39,6 +40,7 @@ $(function(){
 		ballResize();
 	});
 
+	// マウスオーバー時の処理
 	$(".chunk").hover(function(){
 		if(fadeIned == true){
 			$(".chunk").hover(function(){
