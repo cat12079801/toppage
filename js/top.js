@@ -143,7 +143,6 @@ function init(){
 		"left": -1*shorter*0.6
 	},{
 		"duration": 1000,
-		"easing": "swing",
 		"complete": function(){
 			$(".ball").fadeTo(fadeTime, 1);
 			$(".initial").fadeTo(fadeTime, 1);
