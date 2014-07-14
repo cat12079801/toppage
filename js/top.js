@@ -1,5 +1,5 @@
-var fadeIned = false;
-var clicked = false;
+var fadeInedFlag = false;
+var clickedFlag = false;
 
 // adjustX,Y はイニシャルの位置調整用
 var adjustX = {
@@ -45,7 +45,7 @@ $(function(){
 
 	// マウスオーバー時の処理
 	$(".chunk").hover(function(){
-		if(fadeIned == true){
+		if(fadeInedFlag == true){
 			$(".chunk").hover(function(){
 				switch($(this).attr("id")){
 					case "first":
@@ -62,7 +62,7 @@ $(function(){
 						break;
 				}
 			},function(){
-				if(clicked == false){
+				if(clickedFlag == false){
 					switch($(this).attr("id")){
 						case "first":
 							mouse_off($(this), 12);
@@ -77,6 +77,7 @@ $(function(){
 							mouse_off($(this), 78);
 							break;
 					}
+				}
 			});
 		}
 	});
@@ -149,7 +150,7 @@ function init(){
 			$(".initial").fadeTo(fadeTime, 1);
 			ballResize();
 			setTimeout(function(){
-				fadeIned = true;
+				fadeInedFlag = true;
 			},fadeTime);
 		}
 	});

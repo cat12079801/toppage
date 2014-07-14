@@ -58,7 +58,7 @@ function mouse_off(this_obj, rad){
 
 // クリック時の処理関数
 function clicked(this_obj, rad){
-	clicked = true;
+	clickedFlag = true;
 	this_obj.find(".ball").stop().animate({
 		top: 0,
 		left: 0,
