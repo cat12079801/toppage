@@ -60,7 +60,18 @@ function mouse_off(this_obj, rad){
 function clicked(this_obj, rad){
 	clickedFlag = true;
 	this_obj.find(".ball").stop().animate({
-		top: 0,
-		left: 0,
+		top: shorter/30,
+		left: shorter/30,
+	}, 1500);
+
+	var largeFont = shorter / 5;
+	this_obj.find(".initial").stop().animate({
+		top: shorter/30 + largeFont/2*adjustY[rad] + shorter/10 + shorter/10/2,
+		left: shorter/30 + largeFont/2*adjustX[rad] + shorter/10 + shorter/10/2,
+	}, 1500);
+
+	this_obj.find(".text").stop().animate({
+		top: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/10 + shorter/10/2,
+		left: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/10 + shorter/10/2,
 	}, 1500);
 }
