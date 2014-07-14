@@ -76,6 +76,25 @@ $(function(){
 			});
 		}
 	});
+
+	// クリック時の処理
+	$(".chunk").click(function(){
+		console.log($(this).attr("id"));
+		switch($(this).attr("id")){
+			case "first":
+				clicked($(this), 12);
+				break;
+			case "second":
+				clicked($(this), 34);
+				break;
+			case "third":
+				clicked($(this), 56);
+				break;
+			case "fourth":
+				clicked($(this), 78);
+				break;
+		}
+	});
 });
 
 function init(){
