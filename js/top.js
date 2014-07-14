@@ -1,4 +1,6 @@
 var fadeIned = false;
+var clicked = false;
+
 // adjustX,Y はイニシャルの位置調整用
 var adjustX = {
 	12: -1.3,
@@ -60,20 +62,21 @@ $(function(){
 						break;
 				}
 			},function(){
-				switch($(this).attr("id")){
-					case "first":
-						mouse_off($(this), 12);
-						break;
-					case "second":
-						mouse_off($(this), 34);
-						break;
-					case "third":
-						mouse_off($(this), 56);
-						break;
-					case "fourth":
-						mouse_off($(this), 78);
-						break;
-				}
+				if(clicked == false){
+					switch($(this).attr("id")){
+						case "first":
+							mouse_off($(this), 12);
+							break;
+						case "second":
+							mouse_off($(this), 34);
+							break;
+						case "third":
+							mouse_off($(this), 56);
+							break;
+						case "fourth":
+							mouse_off($(this), 78);
+							break;
+					}
 			});
 		}
 	});
