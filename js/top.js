@@ -32,6 +32,7 @@ $(function(){
 	var shorter = height < width ? height : width;
 
 	ballResize();
+	// 画面外にまずは置く
 	$(".ball").offset({top:-1*$(this).height(), left:-1*$(this).width()})
 	$("#mainBall").offset({top:-1*$(this).height(), left:-1*$(this).width()})
 	init();
@@ -42,33 +43,33 @@ $(function(){
 	$(".chunk").hover(function(){
 		if(fadeIned == true){
 			$(".chunk").hover(function(){
-				switch($(this).children(".ball").attr("id")){
-					case "firstBall":
-						mouse_on($(this).children(".ball"), 12);
+				switch($(this).attr("id")){
+					case "first":
+						mouse_on($(this), 12);
 						break;
-					case "secondBall":
-						mouse_on($(this).children(".ball"), 34);
+					case "second":
+						mouse_on($(this), 34);
 						break;
-					case "thirdBall":
-						mouse_on($(this).children(".ball"), 56);
+					case "third":
+						mouse_on($(this), 56);
 						break;
-					case "fourthBall":
-						mouse_on($(this).children(".ball"), 78);
+					case "fourth":
+						mouse_on($(this), 78);
 						break;
 				}
 			},function(){
-				switch($(this).children(".ball").attr("id")){
-					case "firstBall":
-						mouse_off($(this).children(".ball"), 12);
+				switch($(this).attr("id")){
+					case "first":
+						mouse_off($(this), 12);
 						break;
-					case "secondBall":
-						mouse_off($(this).children(".ball"), 34);
+					case "second":
+						mouse_off($(this), 34);
 						break;
-					case "thirdBall":
-						mouse_off($(this).children(".ball"), 56);
+					case "third":
+						mouse_off($(this), 56);
 						break;
-					case "fourthBall":
-						mouse_off($(this).children(".ball"), 78);
+					case "fourth":
+						mouse_off($(this), 78);
 						break;
 				}
 			});
@@ -145,17 +146,16 @@ function ballResize(){
 		$(this).offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
 	});
 	// 小さいボールとその上の文字をリサイズ、リプレース
-	// 3,4引数はX,Yの位置調整の倍率なのでデフォルトが1
-	resize($("#firstBall"), 12, 1, 0.9);
-	resize($("#secondBall"), 34, 0.8, 0.8);
-	resize($("#thirdBall"), 56, 0.9, 0.9);
-	resize($("#fourthBall"), 78, 0.7, 1);
+	resize($("#first"), 12);
+	resize($("#second"), 34);
+	resize($("#third"), 56);
+	resize($("#fourth"), 78);
 }
 
 // マウスオーバーon時の処理関数
 function mouse_on(this_obj, rad){
 	// .stop() でアニメーションが狂わなくなる
-	this_obj.stop().animate({
+	this_obj.find(".ball").stop().animate({
 		// shorter/10 大きくなる分の半分ずらす
 		top: shorter*0.8*sin(rad) - shorter/10 - shorter/10/2 + "px",
 		left: shorter*0.8*cos(rad) - shorter/10 - shorter/10/2 + "px",
@@ -164,45 +164,45 @@ function mouse_on(this_obj, rad){
 	},300);
 	// largeFont サイズになるから位置調整等
 	var largeFont = shorter/5;
-	this_obj.siblings(".initial").stop().animate({
+	this_obj.find(".initial").stop().animate({
 		fontSize:largeFont+"px",
 		top:shorter*0.8*sin(rad)+largeFont/2*adjustY[rad] + "px",
 		left:shorter*0.8*cos(rad)+largeFont/2*adjustX[rad] + "px",
 	},300);
-	this_obj.siblings(".text").each(function(){
+	this_obj.find(".text").each(function(){
 		$(this).offset({
 			top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY2[rad],
 			left:shorter*0.8*cos(rad)-$(this).css("font-size").replace("px","")*adjustX2[rad],
 		});
 	});
-	this_obj.siblings(".text").stop().animate({
-		top:shorter*0.8*sin(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustY2[rad],
-		left:shorter*0.8*cos(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustX2[rad],
+	this_obj.find(".text").stop().animate({
+		top:shorter*0.8*sin(rad)+this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad],
+		left:shorter*0.8*cos(rad)+this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad],
 		opacity: 1
 	},300);
 }
 
 // マウスオーバーoff時の処理関数
 function mouse_off(this_obj, rad){
-	this_obj.stop().animate({
+	this_obj.find(".ball").stop().animate({
 		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
 		width: shorter*0.2 + "px",
 		height: shorter*0.2 + "px"
 	},1200);
-	this_obj.siblings(".initial").stop().animate({
+	this_obj.find(".initial").stop().animate({
 		fontSize:shorter/8+"px",
 		top:shorter*0.8*sin(rad)+shorter/8/2*adjustY[rad],
 		left:shorter*0.8*cos(rad)+shorter/8/2*adjustX[rad],
 	},1200);
-	this_obj.siblings(".text").stop().animate({
-		top:shorter*0.8*sin(rad)+this_obj.siblings(".text").css("font-size").replace("px","")/2*adjustY2[rad],
-		left:shorter*0.8*cos(rad)-this_obj.siblings(".text").css("font-size").replace("px","")*adjustX2[rad],
+	this_obj.find(".text").stop().animate({
+		top:shorter*0.8*sin(rad)+this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad],
+		left:shorter*0.8*cos(rad)-this_obj.find(".text").css("font-size").replace("px","")*adjustX2[rad],
 		opacity: 0
 	},{
 		"duration": 1000,
 		"complete": function(){
-			this_obj.siblings(".text").offset({
+			this_obj.find(".text").offset({
 				top: -99999,
 				left: -99999
 			});
@@ -212,26 +212,26 @@ function mouse_off(this_obj, rad){
 
 //リサイズ、リプレースする関数
 function resize(this_obj, rad){
-	this_obj.each(function(){
-		// イニシャルを置く
-		$(this).siblings(".initial").each(function(){
-			$(this).offset({
-				top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY[rad],
-				left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX[rad],
-			});
-		});
-		$(this).siblings(".text").each(function(){
-			$(this).offset({
-				top: -99999,
-				left: -99999,
-			});
-		});
-		this_obj.height(shorter*0.2);
-		this_obj.width(shorter*0.2);
-		this_obj.offset({
+	this_obj.find(".ball").each(function(){
+		$(this).height(shorter*0.2);
+		$(this).width(shorter*0.2);
+		$(this).offset({
 			// sin()までで円弧上の座標、そこから画像の半分を引く
 			top:shorter*0.8*sin(rad)-shorter*0.2/2,
 			left:shorter*0.8*cos(rad)-shorter*0.2/2
+		});
+	});
+	// イニシャルを置く
+	this_obj.find(".initial").each(function(){
+		$(this).offset({
+			top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY[rad],
+			left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX[rad],
+		});
+	});
+	this_obj.find(".text").each(function(){
+		$(this).offset({
+			top: -99999,
+			left: -99999,
 		});
 	});
 }
