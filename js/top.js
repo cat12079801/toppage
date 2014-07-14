@@ -47,19 +47,21 @@ $(function(){
 	$(".chunk").hover(function(){
 		if(fadeInedFlag == true){
 			$(".chunk").hover(function(){
-				switch($(this).attr("id")){
-					case "first":
-						mouse_on($(this), 12);
-						break;
-					case "second":
-						mouse_on($(this), 34);
-						break;
-					case "third":
-						mouse_on($(this), 56);
-						break;
-					case "fourth":
-						mouse_on($(this), 78);
-						break;
+				if(clickedFlag == false){
+					switch($(this).attr("id")){
+						case "first":
+							mouse_on($(this), 12);
+							break;
+						case "second":
+							mouse_on($(this), 34);
+							break;
+						case "third":
+							mouse_on($(this), 56);
+							break;
+						case "fourth":
+							mouse_on($(this), 78);
+							break;
+					}
 				}
 			},function(){
 				if(clickedFlag == false){
@@ -84,19 +86,21 @@ $(function(){
 
 	// クリック時の処理
 	$(".chunk").click(function(){
-		switch($(this).attr("id")){
-			case "first":
-				clicked($(this), 12);
-				break;
-			case "second":
-				clicked($(this), 34);
-				break;
-			case "third":
-				clicked($(this), 56);
-				break;
-			case "fourth":
-				clicked($(this), 78);
-				break;
+		if(clickedFlag == false){
+			switch($(this).attr("id")){
+				case "first":
+					clicked($(this), 12);
+					break;
+				case "second":
+					clicked($(this), 34);
+					break;
+				case "third":
+					clicked($(this), 56);
+					break;
+				case "fourth":
+					clicked($(this), 78);
+					break;
+			}
 		}
 	});
 });
