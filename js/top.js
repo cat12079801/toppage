@@ -84,7 +84,6 @@ $(function(){
 
 	// クリック時の処理
 	$(".chunk").click(function(){
-		console.log($(this).attr("id"));
 		switch($(this).attr("id")){
 			case "first":
 				clicked($(this), 12);
