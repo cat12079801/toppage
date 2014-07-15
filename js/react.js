@@ -60,8 +60,14 @@ function mouse_off(this_obj, rad){
 function clicked(this_obj, rad){
 	clickedFlag = true;
 	this_obj.find(".ball").stop().animate({
+		"width": shorter*1.2,
+		"height": shorter*1.2,
+		"top": -1*shorter*0.6,
+		"left": -1*shorter*0.6
+		/*
 		top: shorter/30,
 		left: shorter/30,
+		*/
 	}, 1500);
 
 	var largeFont = shorter / 5;
