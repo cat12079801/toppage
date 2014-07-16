@@ -38,6 +38,10 @@ body #wrapper{
 		1px 1px #FFF;
 }
 
+#cat{
+	opacity: 0;
+}
+
 @font-face{
 	font-family: 'androgyne';
 	src: url("fonts/androgyne.off");
