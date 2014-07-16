@@ -179,6 +179,7 @@ function ballResize(){
 	resize($("#third"), 56);
 	resize($("#fourth"), 78);
 
+	// ぬこ画像の処理(仮)
 	$("#cat").each(function(){
 		$(this).height(shorter*0.8);
 		$(this).width(shorter*0.5);
