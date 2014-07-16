@@ -150,6 +150,7 @@ function init(){
 		"complete": function(){
 			$(".ball").fadeTo(fadeTime, 1);
 			$(".initial").fadeTo(fadeTime, 1);
+			$("#cat").fadeTo(fadeTime, 1);
 			ballResize();
 			setTimeout(function(){
 				fadeInedFlag = true;
@@ -177,6 +178,15 @@ function ballResize(){
 	resize($("#second"), 34);
 	resize($("#third"), 56);
 	resize($("#fourth"), 78);
+
+	$("#cat").each(function(){
+		$(this).height(shorter*0.8);
+		$(this).width(shorter*0.5);
+		$(this).offset({
+			top: height-shorter*0.9,
+			left: width-shorter*0.7
+		});
+	});
 }
 
 //リサイズ、リプレースする関数
