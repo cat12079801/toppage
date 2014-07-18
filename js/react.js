@@ -1,5 +1,5 @@
 // マウスオーバーon時の処理関数
-function mouse_on(this_obj, rad){
+function mouseOn(this_obj, rad){
 	// .stop() でアニメーションが狂わなくなる
 	this_obj.find(".ball").stop().animate({
 		// shorter/10 大きくなる分の半分ずらす
@@ -29,7 +29,7 @@ function mouse_on(this_obj, rad){
 }
 
 // マウスオーバーoff時の処理関数
-function mouse_off(this_obj, rad){
+function mouseOff(this_obj, rad){
 	this_obj.find(".ball").stop().animate({
 		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
@@ -98,10 +98,10 @@ function clicked(this_obj, rad){
 function catClicked(){
 	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6})
 	$("#main").stop().fadeTo(1500, 1);
-	mouse_off($("#first"), 12);
-	mouse_off($("#second"), 34);
-	mouse_off($("#third"), 56);
-	mouse_off($("#fourth"), 78);
+	mouseOff($("#first"), 12);
+	mouseOff($("#second"), 34);
+	mouseOff($("#third"), 56);
+	mouseOff($("#fourth"), 78);
 	$("#first").stop().fadeTo(1500, 1);
 	$("#second").stop().fadeTo(1500, 1);
 	$("#third").stop().fadeTo(1500, 1);

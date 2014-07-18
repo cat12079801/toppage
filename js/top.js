@@ -50,16 +50,16 @@ $(function(){
 				if(clickedFlag == false){
 					switch($(this).attr("id")){
 						case "first":
-							mouse_on($(this), 12);
+							mouseOn($(this), 12);
 							break;
 						case "second":
-							mouse_on($(this), 34);
+							mouseOn($(this), 34);
 							break;
 						case "third":
-							mouse_on($(this), 56);
+							mouseOn($(this), 56);
 							break;
 						case "fourth":
-							mouse_on($(this), 78);
+							mouseOn($(this), 78);
 							break;
 					}
 				}
@@ -67,16 +67,16 @@ $(function(){
 				if(clickedFlag == false){
 					switch($(this).attr("id")){
 						case "first":
-							mouse_off($(this), 12);
+							mouseOff($(this), 12);
 							break;
 						case "second":
-							mouse_off($(this), 34);
+							mouseOff($(this), 34);
 							break;
 						case "third":
-							mouse_off($(this), 56);
+							mouseOff($(this), 56);
 							break;
 						case "fourth":
-							mouse_off($(this), 78);
+							mouseOff($(this), 78);
 							break;
 					}
 				}
