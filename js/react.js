@@ -93,3 +93,19 @@ function clicked(this_obj, rad){
 		}
 	});
 }
+
+// ぬこ画像クリックして元に戻る処理
+function catClicked(){
+	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6})
+	$("#main").stop().fadeTo(1500, 1);
+	mouse_off($("#first"), 12);
+	mouse_off($("#second"), 34);
+	mouse_off($("#third"), 56);
+	mouse_off($("#fourth"), 78);
+	$("#first").stop().fadeTo(1500, 1);
+	$("#second").stop().fadeTo(1500, 1);
+	$("#third").stop().fadeTo(1500, 1);
+	$("#fourth").stop().fadeTo(1500, 1);
+	fadeInedFlag = false;
+	clickedFlag = false;
+}

@@ -84,7 +84,7 @@ $(function(){
 		}
 	});
 
-	// クリック時の処理
+	// ボールクリック時の処理
 	$(".chunk").click(function(){
 		if(clickedFlag == false){
 			switch($(this).attr("id")){
@@ -102,6 +102,11 @@ $(function(){
 					break;
 			}
 		}
+	});
+
+	// ぬこをクリックして元に戻す処理
+	$("#cat").click(function(){
+		catClicked();
 	});
 });
 
