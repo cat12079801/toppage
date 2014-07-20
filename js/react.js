@@ -60,10 +60,10 @@ function mouseOff(this_obj, rad){
 function clicked(this_obj, rad){
 	clickedFlag = true;
 	this_obj.find(".ball").stop().animate({
-		"width": shorter*1.2,
-		"height": shorter*1.2,
-		"top": -1*shorter*0.6,
-		"left": -1*shorter*0.6
+		"width": shorter*0.6,
+		"height": shorter*0.6,
+		"top": -1*shorter*0.3,
+		"left": -1*shorter*0.3
 		/*
 		top: shorter/30,
 		left: shorter/30,
@@ -72,13 +72,13 @@ function clicked(this_obj, rad){
 
 	var largeFont = shorter / 5;
 	this_obj.find(".initial").stop().animate({
-		top: shorter/30 + largeFont/2*adjustY[rad] + shorter/10 + shorter/10/2,
-		left: shorter/30 + largeFont/2*adjustX[rad] + shorter/10 + shorter/10/2,
+		top: largeFont/2*adjustY[rad] + shorter/8,
+		left: largeFont/2*adjustX[rad] + shorter/8,
 	}, 1500);
 
 	this_obj.find(".text").stop().animate({
-		top: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/10 + shorter/10/2,
-		left: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/10 + shorter/10/2,
+		top: this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/8,
+		left: this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/8,
 	}, 1500);
 
 	$(".chunk").not(this_obj).stop().animate({
