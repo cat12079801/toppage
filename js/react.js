@@ -81,58 +81,6 @@ function clicked(this_obj, rad){
 		left: this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/8,
 	}, 1500);
 
-
-	/*
-	target_obj = this_obj.find(".datails").find(".start");
-	//target_obj = this_obj.find(".datails div:first-child");
-
-	target_obj.offset({
-		top: shorter*0.4,
-		left: shorter/10,
-	});
-
-var i = 0;
-	do{
-		target_obj = target_obj.next();
-		i++;
-		console.log(i);
-		console.log(target_obj.hasClass("end"));
-		console.log(target_obj.next().hasClass("end"));
-
-	}while(target_obj.next().hasClass("end"));
-	*/
-
-
-	// 詳細文の表示
-	var target_obj = this_obj.find(".details div:first-child");
-	var i=0;
-
-	while(true){
-		i++;
-		target_obj = target_obj.next();
-
-		target_obj.offset({
-			top: shorter/10*(2.5+i),
-			left: shorter/10,
-		});
-
-		if(target_obj.hasClass("end") == true){
-			break;
-		}
-	}
-
-	/*
-	target_obj.offset({
-		top: shorter*0.4,
-		left: shorter/10,
-	});
-
-	this_obj.find(".details div:first-child").next().offset({
-		top: shorter*0.5,
-		left: shorter/10,
-	});
-	*/
-
 	$(".chunk").not(this_obj).stop().animate({
 		opacity: 0,
 	},{
@@ -142,6 +90,35 @@ var i = 0;
 				top: -99999,
 				left: -99999
 			});
+
+			// 詳細文の表示
+			var colorNumber = this_obj.find(".ball").attr("src").replace("vivid/", "").replace(".png", "")*1;
+			var target_obj = this_obj.find(".details div:first-child");
+			var i = 0;
+			while(true){
+				i++;
+
+				setBall(target_obj.find(".smallBall"), (colorNumber + i)%12);
+				target_obj.find(".smallBall").each(function(){
+					$(this).height(shorter/30);
+					$(this).width(shorter/30);
+				});
+				target_obj.css("fontSize", shorter/30+"px");
+				target_obj.find(".title").css("fontSize", shorter/20+"px");
+				target_obj.offset({
+					top: shorter/12*(3+i),
+					left: shorter/10,
+				});
+				target_obj.find(".content").offset({
+					left: shorter/3,
+				});
+
+				if(target_obj.hasClass("end") == true){
+					break;
+				}
+				target_obj = target_obj.next();
+			}
+
 		}
 	});
 }
