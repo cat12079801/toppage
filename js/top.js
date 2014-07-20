@@ -110,8 +110,8 @@ $(function(){
 	});
 });
 
-function init(){
-	fadeTime = 1500;
+// htmlタグにimgのsrcを埋め込む
+function setBall(this_obj, i){
 	color = new Array();
 	color = {
 		0: "vivid/1.png",
@@ -128,6 +128,11 @@ function init(){
 		11:"vivid/12.png"
 	};
 
+	this_obj.attr("src", color[i]);
+}
+
+function init(){
+	fadeTime = 1500;
 	var unique = new Array();
 	for(var loop = 0 ; loop < 5 ;){
 		unique[loop] = Math.floor(Math.random()*12);
@@ -140,11 +145,11 @@ function init(){
 		loop++;
 	}
 
-	$("#mainBall"  ).attr("src", color[unique[0]]);
-	$("#firstBall" ).attr("src", color[unique[1]]);
-	$("#secondBall").attr("src", color[unique[2]]);
-	$("#thirdBall" ).attr("src", color[unique[3]]);
-	$("#fourthBall").attr("src", color[unique[4]]);
+	setBall($("#mainBall"  ), unique[0]);
+	setBall($("#firstBall" ), unique[1]);
+	setBall($("#secondBall"), unique[2]);
+	setBall($("#thirdBall" ), unique[3]);
+	setBall($("#fourthBall"), unique[4]);
 
 	$("#mainBall").fadeTo(0, 1);
 	$("#mainBall").animate({
