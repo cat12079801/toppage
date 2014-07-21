@@ -81,6 +81,26 @@ function clicked(this_obj, rad){
 		left: this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/8,
 	}, 1500);
 
+	// ぬこを消して肉球を出す
+	$("#cat").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 750,
+		"complete": function(){
+			$("#cat").offset({
+				top: -9999,
+				left: -9999,
+			});
+			$("#nikukyu").height(shorter/8);
+			$("#nikukyu").width(shorter/8);
+			$("#nikukyu").offset({
+				top: height-$("#nikukyu").height()*1.5,
+				left: width-$("#nikukyu").width()*1.5,
+			});
+			$("#nikukyu").fadeTo(750, 1);
+		}
+	});
+
 	$(".chunk").not(this_obj).stop().animate({
 		opacity: 0,
 	},{
@@ -124,7 +144,7 @@ function clicked(this_obj, rad){
 }
 
 // ぬこ画像クリックして元に戻る処理
-function catClicked(){
+function nikukyuClicked(){
 	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6})
 	$("#main").stop().fadeTo(1500, 1);
 	mouseOff($("#first"), 12);
@@ -135,6 +155,19 @@ function catClicked(){
 	$("#second").stop().fadeTo(1500, 1);
 	$("#third").stop().fadeTo(1500, 1);
 	$("#fourth").stop().fadeTo(1500, 1);
+	$("#nikukyu").fadeTo(750, 0);
+	$("#nikukyu").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 750,
+		"complete": function(){
+			$("#nikukyu").offset({
+				top: -9999,
+				left: -9999,
+			});
+			// ぬこ画像を表示する処理をあとで書く
+		}
+	});
 	fadeInedFlag = false;
 	clickedFlag = false;
 }
