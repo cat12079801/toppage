@@ -104,9 +104,9 @@ $(function(){
 		}
 	});
 
-	// ぬこをクリックして元に戻す処理
-	$("#cat").click(function(){
-		catClicked();
+	// 肉球をクリックして元に戻す処理
+	$("#nikukyu").click(function(){
+		nikukyuClicked();
 	});
 });
 
