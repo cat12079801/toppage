@@ -92,7 +92,7 @@ function clicked(this_obj, rad){
 			});
 
 			// 詳細文の表示
-			var colorNumber = this_obj.find(".ball").attr("src").replace("vivid/", "").replace(".png", "")*1;
+			var colorNumber = this_obj.find(".ball").attr("src").replace("img/", "").replace(".png", "")*1;
 			var target_obj = this_obj.find(".details div:first-child");
 			var i = 0;
 			while(true){

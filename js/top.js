@@ -114,18 +114,18 @@ $(function(){
 function setBall(this_obj, i){
 	color = new Array();
 	color = {
-		0: "vivid/1.png",
-		1: "vivid/2.png",
-		2: "vivid/3.png",
-		3: "vivid/4.png",
-		4: "vivid/5.png",
-		5: "vivid/6.png",
-		6: "vivid/7.png",
-		7: "vivid/8.png",
-		8: "vivid/9.png",
-		9: "vivid/10.png",
-		10:"vivid/11.png",
-		11:"vivid/12.png"
+		0: "img/1.png",
+		1: "img/2.png",
+		2: "img/3.png",
+		3: "img/4.png",
+		4: "img/5.png",
+		5: "img/6.png",
+		6: "img/7.png",
+		7: "img/8.png",
+		8: "img/9.png",
+		9: "img/10.png",
+		10:"img/11.png",
+		11:"img/12.png"
 	};
 
 	this_obj.attr("src", color[i]);
