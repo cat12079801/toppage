@@ -110,37 +110,36 @@ function clicked(this_obj, rad){
 				top: -99999,
 				left: -99999
 			});
-
-			// 詳細文の表示
-			var colorNumber = this_obj.find(".ball").attr("src").replace("img/", "").replace(".png", "")*1;
-			var target_obj = this_obj.find(".details div:first-child");
-			var i = 0;
-			while(true){
-				i++;
-
-				setBall(target_obj.find(".smallBall"), (colorNumber + i)%12);
-				target_obj.find(".smallBall").each(function(){
-					$(this).height(shorter/30);
-					$(this).width(shorter/30);
-				});
-				target_obj.css("fontSize", shorter/30+"px");
-				target_obj.find(".title").css("fontSize", shorter/20+"px");
-				target_obj.offset({
-					top: shorter/12*(3+i),
-					left: shorter/10,
-				});
-				target_obj.find(".content").offset({
-					left: shorter/3,
-				});
-
-				if(target_obj.hasClass("end") == true){
-					break;
-				}
-				target_obj = target_obj.next();
-			}
-
 		}
 	});
+
+	// 詳細文の表示
+	var colorNumber = this_obj.find(".ball").attr("src").replace("img/", "").replace(".png", "")*1;
+	var target_obj = this_obj.find(".details div:first-child");
+	var i = 0;
+	while(true){
+		i++;
+
+		setBall(target_obj.find(".smallBall"), (colorNumber + i)%12);
+		target_obj.find(".smallBall").each(function(){
+			$(this).height(shorter/30);
+			$(this).width(shorter/30);
+		});
+		target_obj.css("fontSize", shorter/30+"px");
+		target_obj.find(".title").css("fontSize", shorter/20+"px");
+		target_obj.offset({
+			top: shorter/12*(3+i),
+			left: shorter/10,
+		});
+		target_obj.find(".content").offset({
+			left: shorter/3,
+		});
+
+		if(target_obj.hasClass("end") == true){
+			break;
+		}
+		target_obj = target_obj.next();
+	}
 }
 
 // 肉球をクリックして元に戻る処理
