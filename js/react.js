@@ -156,11 +156,11 @@ function nikukyuClicked(){
 	},{
 		"duration": 1500,
 		"complete": function(){
-				$(this).offset({
-					top: -9999,
-					left: -9999,
-				});
-			}
+			$(".details").find("div").offset({
+				top: -9999,
+				left: -9999,
+			});
+		}
 	});
 	$("#nikukyu").fadeTo(750, 0);
 	$("#nikukyu").stop().animate({
