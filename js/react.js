@@ -154,6 +154,11 @@ function nikukyuClicked(){
 	$("#second").stop().fadeTo(1500, 1);
 	$("#third").stop().fadeTo(1500, 1);
 	$("#fourth").stop().fadeTo(1500, 1);
+	$(".details").fadeTo(1500, 0);
+	$(".details").offset({
+		top: -9999,
+		left: -9999,
+	});
 	$("#nikukyu").fadeTo(750, 0);
 	$("#nikukyu").stop().animate({
 		opacity: 0,
