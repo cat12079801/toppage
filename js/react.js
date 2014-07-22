@@ -117,6 +117,7 @@ function clicked(this_obj, rad){
 	var colorNumber = this_obj.find(".ball").attr("src").replace("img/", "").replace(".png", "")*1;
 	var target_obj = this_obj.find(".details div:first-child");
 	var i = 0;
+	this_obj.find(".details").fadeTo(1500, 1);
 	while(true){
 		i++;
 
@@ -154,10 +155,16 @@ function nikukyuClicked(){
 	$("#second").stop().fadeTo(1500, 1);
 	$("#third").stop().fadeTo(1500, 1);
 	$("#fourth").stop().fadeTo(1500, 1);
-	$(".details").fadeTo(1500, 0);
-	$(".details").offset({
-		top: -9999,
-		left: -9999,
+	$(".details").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 1500,
+		"complete": function(){
+				$(this).offset({
+					top: -9999,
+					left: -9999,
+				});
+			}
 	});
 	$("#nikukyu").fadeTo(750, 0);
 	$("#nikukyu").stop().animate({
