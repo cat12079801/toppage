@@ -160,6 +160,8 @@ function nikukyuClicked(){
 				top: -9999,
 				left: -9999,
 			});
+			fadeInedFlag = false;
+			clickedFlag = false;
 		}
 	});
 	$("#nikukyu").fadeTo(750, 0);
@@ -197,6 +199,4 @@ function nikukyuClicked(){
 			});
 		}
 	});
-	fadeInedFlag = false;
-	clickedFlag = false;
 }
