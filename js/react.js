@@ -143,7 +143,7 @@ function clicked(this_obj, rad){
 	});
 }
 
-// ぬこ画像クリックして元に戻る処理
+// 肉球をクリックして元に戻る処理
 function nikukyuClicked(){
 	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6})
 	$("#main").stop().fadeTo(1500, 1);
