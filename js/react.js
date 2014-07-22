@@ -166,6 +166,28 @@ function nikukyuClicked(){
 				left: -9999,
 			});
 			// ぬこ画像を表示する処理をあとで書く
+			$("#cat").each(function(){
+				$(this).height(shorter*0.8);
+				$(this).width(shorter*0.5);
+				// これ以下の数字は場当たり的に決めただけで計算はしていない
+				if((height / width) < 0.6){
+					$(this).offset({
+						top: height-shorter*0.9,
+						left: width-shorter*0.7
+					});
+				}else if((height / width) < 0.73){
+					$(this).offset({
+						top: height-shorter*0.9,
+						left: width-shorter*0.53
+					});
+				}else{
+					$(this).offset({
+						top: -9999,
+						left: -9999
+					});
+				}
+				$(this).fadeTo(750, 1);
+			});
 		}
 	});
 	fadeInedFlag = false;
