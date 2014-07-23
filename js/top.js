@@ -45,42 +45,38 @@ $(function(){
 
 	// マウスオーバー時の処理
 	$(".chunk").hover(function(){
-		if(fadeInedFlag == true){
-			$(".chunk").hover(function(){
-				if(clickedFlag == false){
-					switch($(this).attr("id")){
-						case "first":
-							mouseOn($(this), 12);
-							break;
-						case "second":
-							mouseOn($(this), 34);
-							break;
-						case "third":
-							mouseOn($(this), 56);
-							break;
-						case "fourth":
-							mouseOn($(this), 78);
-							break;
-					}
-				}
-			},function(){
-				if(clickedFlag == false){
-					switch($(this).attr("id")){
-						case "first":
-							mouseOff($(this), 12);
-							break;
-						case "second":
-							mouseOff($(this), 34);
-							break;
-						case "third":
-							mouseOff($(this), 56);
-							break;
-						case "fourth":
-							mouseOff($(this), 78);
-							break;
-					}
-				}
-			});
+		if(fadeInedFlag == true && clickedFlag == false){
+			switch($(this).attr("id")){
+				case "first":
+					mouseOn($(this), 12);
+					break;
+				case "second":
+					mouseOn($(this), 34);
+					break;
+				case "third":
+					mouseOn($(this), 56);
+					break;
+				case "fourth":
+					mouseOn($(this), 78);
+					break;
+			}
+		}
+	},function(){
+		if(fadeInedFlag == true && clickedFlag == false){
+			switch($(this).attr("id")){
+				case "first":
+					mouseOff($(this), 12);
+					break;
+				case "second":
+					mouseOff($(this), 34);
+					break;
+				case "third":
+					mouseOff($(this), 56);
+					break;
+				case "fourth":
+					mouseOff($(this), 78);
+					break;
+			}
 		}
 	});
 
