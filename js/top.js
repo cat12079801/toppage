@@ -177,7 +177,10 @@ function ballResize(){
 		$(this).height(shorter*1.2);
 		$(this).width(shorter*1.2);
 		// 大きさの半分を引いて左上を中心に
-		$(this).offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
+		$(this).offset({
+			"top": -1*shorter*0.6, 
+			"left": -1*shorter*0.6
+		});
 	});
 	// 小さいボールとその上の文字をリサイズ、リプレース
 	resize($("#first"), 12);
@@ -192,18 +195,18 @@ function ballResize(){
 		// これ以下の数字は場当たり的に決めただけで計算はしていない
 		if((height / width) < 0.6){
 			$(this).offset({
-				top: height-shorter*0.9,
-				left: width-shorter*0.7
+				"top": height-shorter*0.9,
+				"left": width-shorter*0.7
 			});
 		}else if((height / width) < 0.73){
 			$(this).offset({
-				top: height-shorter*0.9,
-				left: width-shorter*0.53
+				"top": height-shorter*0.9,
+				"left": width-shorter*0.53
 			});
 		}else{
 			$(this).offset({
-				top: -9999,
-				left: -9999
+				"top": -9999,
+				"left": -9999
 			});
 		}
 	});
@@ -216,21 +219,21 @@ function resize(this_obj, rad){
 		$(this).width(shorter*0.2);
 		$(this).offset({
 			// sin()までで円弧上の座標、そこから画像の半分を引く
-			top:shorter*0.8*sin(rad)-shorter*0.2/2,
-			left:shorter*0.8*cos(rad)-shorter*0.2/2
+			"top": shorter*0.8*sin(rad)-shorter*0.2/2,
+			"left": shorter*0.8*cos(rad)-shorter*0.2/2
 		});
 	});
 	// イニシャルを置く
 	this_obj.find(".initial").each(function(){
 		$(this).offset({
-			top:shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY[rad],
-			left:shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX[rad],
+			"top": shorter*0.8*sin(rad)+$(this).css("font-size").replace("px","")/2*adjustY[rad],
+			"left": shorter*0.8*cos(rad)+$(this).css("font-size").replace("px","")/2*adjustX[rad],
 		});
 	});
 	this_obj.find(".text").each(function(){
 		$(this).offset({
-			top: -99999,
-			left: -99999,
+			"top": -99999,
+			"left": -99999,
 		});
 	});
 }
