@@ -46,7 +46,7 @@ function mouseOff(this_obj, rad){
 		left:shorter*0.8*cos(rad)-this_obj.find(".text").css("font-size").replace("px","")*adjustX2[rad],
 		opacity: 0
 	},{
-		"duration": 1000,
+		"duration": 1200,
 		"complete": function(){
 			this_obj.find(".text").offset({
 				top: -99999,
