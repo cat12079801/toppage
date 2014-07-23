@@ -42,6 +42,14 @@ body #wrapper{
 	opacity: 0;
 }
 
+#nikukyu{
+	opacity: 0;
+}
+
+.details{
+	opacity: 0;
+}
+
 @font-face{
 	font-family: 'androgyne';
 	src: url("fonts/androgyne.off");

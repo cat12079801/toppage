@@ -50,16 +50,16 @@ $(function(){
 				if(clickedFlag == false){
 					switch($(this).attr("id")){
 						case "first":
-							mouse_on($(this), 12);
+							mouseOn($(this), 12);
 							break;
 						case "second":
-							mouse_on($(this), 34);
+							mouseOn($(this), 34);
 							break;
 						case "third":
-							mouse_on($(this), 56);
+							mouseOn($(this), 56);
 							break;
 						case "fourth":
-							mouse_on($(this), 78);
+							mouseOn($(this), 78);
 							break;
 					}
 				}
@@ -67,16 +67,16 @@ $(function(){
 				if(clickedFlag == false){
 					switch($(this).attr("id")){
 						case "first":
-							mouse_off($(this), 12);
+							mouseOff($(this), 12);
 							break;
 						case "second":
-							mouse_off($(this), 34);
+							mouseOff($(this), 34);
 							break;
 						case "third":
-							mouse_off($(this), 56);
+							mouseOff($(this), 56);
 							break;
 						case "fourth":
-							mouse_off($(this), 78);
+							mouseOff($(this), 78);
 							break;
 					}
 				}
@@ -84,7 +84,7 @@ $(function(){
 		}
 	});
 
-	// クリック時の処理
+	// ボールクリック時の処理
 	$(".chunk").click(function(){
 		if(clickedFlag == false){
 			switch($(this).attr("id")){
@@ -103,26 +103,36 @@ $(function(){
 			}
 		}
 	});
+
+	// 肉球をクリックして元に戻す処理
+	$("#nikukyu").click(function(){
+		nikukyuClicked();
+	});
 });
+
+// htmlタグにimgのsrcを埋め込む
+function setBall(this_obj, i){
+	color = new Array();
+	color = {
+		0: "img/1.png",
+		1: "img/2.png",
+		2: "img/3.png",
+		3: "img/4.png",
+		4: "img/5.png",
+		5: "img/6.png",
+		6: "img/7.png",
+		7: "img/8.png",
+		8: "img/9.png",
+		9: "img/10.png",
+		10:"img/11.png",
+		11:"img/12.png"
+	};
+
+	this_obj.attr("src", color[i]);
+}
 
 function init(){
 	fadeTime = 1500;
-	color = new Array();
-	color = {
-		0: "vivid/1.png",
-		1: "vivid/2.png",
-		2: "vivid/3.png",
-		3: "vivid/4.png",
-		4: "vivid/5.png",
-		5: "vivid/6.png",
-		6: "vivid/7.png",
-		7: "vivid/8.png",
-		8: "vivid/9.png",
-		9: "vivid/10.png",
-		10:"vivid/11.png",
-		11:"vivid/12.png"
-	};
-
 	var unique = new Array();
 	for(var loop = 0 ; loop < 5 ;){
 		unique[loop] = Math.floor(Math.random()*12);
@@ -135,11 +145,11 @@ function init(){
 		loop++;
 	}
 
-	$("#mainBall"  ).attr("src", color[unique[0]]);
-	$("#firstBall" ).attr("src", color[unique[1]]);
-	$("#secondBall").attr("src", color[unique[2]]);
-	$("#thirdBall" ).attr("src", color[unique[3]]);
-	$("#fourthBall").attr("src", color[unique[4]]);
+	setBall($("#mainBall"  ), unique[0]);
+	setBall($("#firstBall" ), unique[1]);
+	setBall($("#secondBall"), unique[2]);
+	setBall($("#thirdBall" ), unique[3]);
+	setBall($("#fourthBall"), unique[4]);
 
 	$("#mainBall").fadeTo(0, 1);
 	$("#mainBall").animate({

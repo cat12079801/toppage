@@ -1,5 +1,5 @@
 // マウスオーバーon時の処理関数
-function mouse_on(this_obj, rad){
+function mouseOn(this_obj, rad){
 	// .stop() でアニメーションが狂わなくなる
 	this_obj.find(".ball").stop().animate({
 		// shorter/10 大きくなる分の半分ずらす
@@ -29,7 +29,7 @@ function mouse_on(this_obj, rad){
 }
 
 // マウスオーバーoff時の処理関数
-function mouse_off(this_obj, rad){
+function mouseOff(this_obj, rad){
 	this_obj.find(".ball").stop().animate({
 		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
@@ -60,10 +60,10 @@ function mouse_off(this_obj, rad){
 function clicked(this_obj, rad){
 	clickedFlag = true;
 	this_obj.find(".ball").stop().animate({
-		"width": shorter*1.2,
-		"height": shorter*1.2,
-		"top": -1*shorter*0.6,
-		"left": -1*shorter*0.6
+		"width": shorter*0.6,
+		"height": shorter*0.6,
+		"top": -1*shorter*0.3,
+		"left": -1*shorter*0.3
 		/*
 		top: shorter/30,
 		left: shorter/30,
@@ -72,14 +72,34 @@ function clicked(this_obj, rad){
 
 	var largeFont = shorter / 5;
 	this_obj.find(".initial").stop().animate({
-		top: shorter/30 + largeFont/2*adjustY[rad] + shorter/10 + shorter/10/2,
-		left: shorter/30 + largeFont/2*adjustX[rad] + shorter/10 + shorter/10/2,
+		top: largeFont/2*adjustY[rad] + shorter/8,
+		left: largeFont/2*adjustX[rad] + shorter/8,
 	}, 1500);
 
 	this_obj.find(".text").stop().animate({
-		top: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/10 + shorter/10/2,
-		left: shorter/30 + this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/10 + shorter/10/2,
+		top: this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/8,
+		left: this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/8,
 	}, 1500);
+
+	// ぬこを消して肉球を出す
+	$("#cat").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 750,
+		"complete": function(){
+			$("#cat").offset({
+				top: -9999,
+				left: -9999,
+			});
+			$("#nikukyu").height(shorter/8);
+			$("#nikukyu").width(shorter/8);
+			$("#nikukyu").offset({
+				top: height-$("#nikukyu").height()*1.5,
+				left: width-$("#nikukyu").width()*1.5,
+			});
+			$("#nikukyu").fadeTo(750, 1);
+		}
+	});
 
 	$(".chunk").not(this_obj).stop().animate({
 		opacity: 0,
@@ -89,6 +109,93 @@ function clicked(this_obj, rad){
 			$(".chunk").not(this_obj).offset({
 				top: -99999,
 				left: -99999
+			});
+		}
+	});
+
+	// 詳細文の表示
+	var colorNumber = this_obj.find(".ball").attr("src").replace("img/", "").replace(".png", "")*1;
+	var target_obj = this_obj.find(".details div:first-child");
+	var i = 0;
+	this_obj.find(".details").fadeTo(1500, 1);
+	while(true){
+		i++;
+
+		setBall(target_obj.find(".smallBall"), (colorNumber + i)%12);
+		target_obj.find(".smallBall").each(function(){
+			$(this).height(shorter/30);
+			$(this).width(shorter/30);
+		});
+		target_obj.css("fontSize", shorter/30+"px");
+		target_obj.find(".title").css("fontSize", shorter/20+"px");
+		target_obj.offset({
+			top: shorter/12*(3+i),
+			left: shorter/10,
+		});
+		target_obj.find(".content").offset({
+			left: shorter/3,
+		});
+
+		if(target_obj.hasClass("end") == true){
+			break;
+		}
+		target_obj = target_obj.next();
+	}
+}
+
+// 肉球をクリックして元に戻る処理
+function nikukyuClicked(){
+	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
+	mouseOff($("#first"), 12);
+	mouseOff($("#second"), 34);
+	mouseOff($("#third"), 56);
+	mouseOff($("#fourth"), 78);
+	$(".chunk").fadeTo(1500, 1);
+	$(".details").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 1500,
+		"complete": function(){
+			$(".details").find("div").offset({
+				top: -9999,
+				left: -9999,
+			});
+			fadeInedFlag = false;
+			clickedFlag = false;
+		}
+	});
+	$("#nikukyu").fadeTo(750, 0);
+	$("#nikukyu").stop().animate({
+		opacity: 0,
+	},{
+		"duration": 750,
+		"complete": function(){
+			$("#nikukyu").offset({
+				top: -9999,
+				left: -9999,
+			});
+			// ぬこ画像を表示する処理をあとで書く
+			$("#cat").each(function(){
+				$(this).height(shorter*0.8);
+				$(this).width(shorter*0.5);
+				// これ以下の数字は場当たり的に決めただけで計算はしていない
+				if((height / width) < 0.6){
+					$(this).offset({
+						top: height-shorter*0.9,
+						left: width-shorter*0.7
+					});
+				}else if((height / width) < 0.73){
+					$(this).offset({
+						top: height-shorter*0.9,
+						left: width-shorter*0.53
+					});
+				}else{
+					$(this).offset({
+						top: -9999,
+						left: -9999
+					});
+				}
+				$(this).fadeTo(750, 1);
 			});
 		}
 	});
