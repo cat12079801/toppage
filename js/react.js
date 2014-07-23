@@ -64,10 +64,6 @@ function clicked(this_obj, rad){
 		"height": shorter*0.6,
 		"top": -1*shorter*0.3,
 		"left": -1*shorter*0.3
-		/*
-		top: shorter/30,
-		left: shorter/30,
-		*/
 	}, 1500);
 
 	var largeFont = shorter / 5;
