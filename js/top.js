@@ -128,7 +128,7 @@ function setBall(this_obj, i){
 }
 
 function init(){
-	fadeTime = 1500;
+	var fadeTime = 1500;
 	var unique = new Array();
 	for(var loop = 0 ; loop < 5 ;){
 		unique[loop] = Math.floor(Math.random()*12);
@@ -166,9 +166,9 @@ function init(){
 }
 
 function ballResize(){
-	height = $("#wrapper").height();
-	width = $("#wrapper").width();
-	shorter = height < width ? height : width;
+	var height = $("#wrapper").height();
+	var width = $("#wrapper").width();
+	var shorter = height < width ? height : width;
 	$(".initial").css("fontSize", shorter/8+"px");
 	$(".text").css("fontSize", shorter/8+"px");
 
