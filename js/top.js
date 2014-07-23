@@ -29,10 +29,6 @@ var adjustY2 = {
 }
 
 $(function(){
-	var height = $("#wrapper").height();
-	var width = $("#wrapper").width();
-	var shorter = height < width ? height : width;
-
 	//初期化
 	ballResize();
 	// 画面外にまずは置く
@@ -166,9 +162,11 @@ function init(){
 }
 
 function ballResize(){
-	var height = $("#wrapper").height();
-	var width = $("#wrapper").width();
-	var shorter = height < width ? height : width;
+	//グローバル(?)で定義
+	height = $("#wrapper").height();
+	width = $("#wrapper").width();
+	shorter = height < width ? height : width;
+
 	$(".initial").css("fontSize", shorter/8+"px");
 	$(".text").css("fontSize", shorter/8+"px");
 
