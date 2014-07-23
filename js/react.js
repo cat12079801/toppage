@@ -156,7 +156,6 @@ function nikukyuClicked(){
 				top: -9999,
 				left: -9999,
 			});
-			fadeInedFlag = false;
 			clickedFlag = false;
 		}
 	});
