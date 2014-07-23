@@ -108,7 +108,7 @@ $(function(){
 
 // htmlタグにimgのsrcを埋め込む
 function setBall(this_obj, i){
-	color = new Array();
+	var color = new Array();
 	color = {
 		0: "img/1.png",
 		1: "img/2.png",
