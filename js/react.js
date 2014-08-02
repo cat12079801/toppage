@@ -59,7 +59,7 @@ function mouseOff(this_obj, rad, time){
 // クリック時の処理関数
 function clicked(this_obj, rad){
 	clickedFlag = true;
-	this_obj.find(".ball").stop().animate({
+	this_obj.find(".ball").animate({
 		"width": shorter*0.6,
 		"height": shorter*0.6,
 		"top": -1*shorter*0.3,
@@ -67,12 +67,12 @@ function clicked(this_obj, rad){
 	}, 1500);
 
 	var largeFont = shorter / 5;
-	this_obj.find(".initial").stop().animate({
+	this_obj.find(".initial").animate({
 		top: largeFont/2*adjustY[rad] + shorter/8,
 		left: largeFont/2*adjustX[rad] + shorter/8,
 	}, 1500);
 
-	this_obj.find(".text").stop().animate({
+	this_obj.find(".text").animate({
 		top: this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad] + shorter/8,
 		left: this_obj.find(".text").css("font-size").replace("px","")/2*adjustX2[rad] + shorter/8,
 	}, 1500);
