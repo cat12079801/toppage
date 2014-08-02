@@ -36,6 +36,9 @@ $(function(){
 	$("#mainBall").offset({top:-1*$(this).height(), left:-1*$(this).width()})
 	init();
 	$(window).resize(function(){
+		if(clickedFlag == true){
+			nikukyuClicked(0);
+		}
 		ballResize();
 	});
 
@@ -61,16 +64,16 @@ $(function(){
 		if(fadeInedFlag == true && clickedFlag == false){
 			switch($(this).attr("id")){
 				case "first":
-					mouseOff($(this), 12);
+					mouseOff($(this), 12, 1200);
 					break;
 				case "second":
-					mouseOff($(this), 34);
+					mouseOff($(this), 34, 1200);
 					break;
 				case "third":
-					mouseOff($(this), 56);
+					mouseOff($(this), 56, 1200);
 					break;
 				case "fourth":
-					mouseOff($(this), 78);
+					mouseOff($(this), 78, 1200);
 					break;
 			}
 		}
@@ -98,7 +101,7 @@ $(function(){
 
 	// 肉球をクリックして元に戻す処理
 	$("#nikukyu").click(function(){
-		nikukyuClicked();
+		nikukyuClicked(1500);
 	});
 });
 

@@ -29,24 +29,24 @@ function mouseOn(this_obj, rad){
 }
 
 // マウスオーバーoff時の処理関数
-function mouseOff(this_obj, rad){
+function mouseOff(this_obj, rad, time){
 	this_obj.find(".ball").stop().animate({
 		top: shorter*0.8*sin(rad)-shorter*0.2/2 + "px",
 		left: shorter*0.8*cos(rad)-shorter*0.2/2 + "px",
 		width: shorter*0.2 + "px",
 		height: shorter*0.2 + "px"
-	},1200);
+	},time);
 	this_obj.find(".initial").stop().animate({
 		fontSize:shorter/8+"px",
 		top:shorter*0.8*sin(rad)+shorter/8/2*adjustY[rad],
 		left:shorter*0.8*cos(rad)+shorter/8/2*adjustX[rad],
-	},1200);
+	},time);
 	this_obj.find(".text").stop().animate({
 		top:shorter*0.8*sin(rad)+this_obj.find(".text").css("font-size").replace("px","")/2*adjustY2[rad],
 		left:shorter*0.8*cos(rad)-this_obj.find(".text").css("font-size").replace("px","")*adjustX2[rad],
 		opacity: 0
 	},{
-		"duration": 1200,
+		"duration": time,
 		"complete": function(){
 			this_obj.find(".text").offset({
 				top: -99999,
@@ -140,17 +140,17 @@ function clicked(this_obj, rad){
 }
 
 // 肉球をクリックして元に戻る処理
-function nikukyuClicked(){
+function nikukyuClicked(fadeTime){
 	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
-	mouseOff($("#first"), 12);
-	mouseOff($("#second"), 34);
-	mouseOff($("#third"), 56);
-	mouseOff($("#fourth"), 78);
-	$(".chunk").fadeTo(1500, 1);
+	mouseOff($("#first"), 12, 0);
+	mouseOff($("#second"), 34, 0);
+	mouseOff($("#third"), 56, 0);
+	mouseOff($("#fourth"), 78, 0);
+	$(".chunk").fadeTo(fadeTime, 1);
 	$(".details").stop().animate({
 		opacity: 0,
 	},{
-		"duration": 1500,
+		"duration": fadeTime,
 		"complete": function(){
 			$(".details").find("div").offset({
 				top: -9999,
@@ -159,11 +159,11 @@ function nikukyuClicked(){
 			clickedFlag = false;
 		}
 	});
-	$("#nikukyu").fadeTo(750, 0);
+	$("#nikukyu").fadeTo(fadeTime / 2, 0);
 	$("#nikukyu").stop().animate({
 		opacity: 0,
 	},{
-		"duration": 750,
+		"duration": fadeTime / 2,
 		"complete": function(){
 			$("#nikukyu").offset({
 				top: -9999,
@@ -190,7 +190,7 @@ function nikukyuClicked(){
 						left: -9999
 					});
 				}
-				$(this).fadeTo(750, 1);
+				$(this).fadeTo(fadeTime / 2, 1);
 			});
 		}
 	});
