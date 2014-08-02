@@ -142,10 +142,10 @@ function clicked(this_obj, rad){
 // 肉球をクリックして元に戻る処理
 function nikukyuClicked(fadeTime){
 	$("#mainBall").offset({top:-1*shorter*0.6, left:-1*shorter*0.6});
-	mouseOff($("#first"), 12, 0);
-	mouseOff($("#second"), 34, 0);
-	mouseOff($("#third"), 56, 0);
-	mouseOff($("#fourth"), 78, 0);
+	mouseOff($("#first"), 12, fadeTime);
+	mouseOff($("#second"), 34, fadeTime);
+	mouseOff($("#third"), 56, fadeTime);
+	mouseOff($("#fourth"), 78, fadeTime);
 	$(".chunk").fadeTo(fadeTime, 1);
 	$(".details").stop().animate({
 		opacity: 0,
